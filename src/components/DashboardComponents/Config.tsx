@@ -13,7 +13,7 @@ const Config = () => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const router = useRouter();
   const [isPasswordEnabled, setIsPasswordEnabled] = useState(false)
-  
+  const apiToken = process.env.NEXT_PUBLIC_API_GET_USERS_TOKEN;
     const handlePasswordChangeClick = () => {
       setIsPasswordEnabled(prevState => !prevState)
     }
@@ -40,7 +40,7 @@ const Config = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3001/users/token`, {
+        const response = await fetch(`${apiToken}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${userToken}`,
@@ -131,9 +131,9 @@ const Config = () => {
       formData.append('zip_code', userData.addresses[0]?.zip_code);
       formData.append('rExpiration', userData.rExpiration);
     }
-
+    const apiUrl = process.env.NEXT_PUBLIC_API_USER_UPDATE;
     try {;
-      const response = await fetch(`http://localhost:3001/users/update`, {
+      const response = await fetch(`${apiUrl}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${userToken}`,

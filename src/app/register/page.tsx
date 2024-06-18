@@ -9,6 +9,8 @@ import Link from "next/link";
 import Swal from "sweetalert2";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_SIGNUP_URL;
+const googleLogin = process.env.NEXT_PUBLIC_GOOGLE_LOGIN;
+
 if (!apiUrl) {
   throw new Error("Environment variable NEXT_PUBLIC_API_POSTS is not set");
 }
@@ -343,7 +345,7 @@ const Register = () => {
           </form>
           <div className="flex justify-center">
             <Link
-              href="http://localhost:3001/auth/google/login"
+              href={`${googleLogin}`}
               className="w-3/4 transition duration-200 border border-gray-200 text-slate-50 hover:shadow-[#c3ff0d92] py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center"
             >
               Ingresar con Google

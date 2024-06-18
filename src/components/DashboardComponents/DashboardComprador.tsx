@@ -14,7 +14,7 @@ const DashboardComprador: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [totalPrice, SetTotalPrice] = useState<number>(0);
   const router = useRouter();
-
+const apiUrl = process.env.NEXT_PUBLIC_API_USER_DASHBOARD;
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const userSession = localStorage.getItem("userSession");
@@ -37,7 +37,7 @@ const DashboardComprador: React.FC = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3001/users/dashboard`, {
+        const response = await fetch(`${apiUrl}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${userToken}`,

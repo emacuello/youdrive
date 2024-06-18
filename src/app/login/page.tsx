@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_SIGNIN_URL;
+const googleLogin = process.env.NEXT_PUBLIC_GOOGLE_LOGIN;
 if (!apiUrl) {
   throw new Error("Environment variable NEXT_PUBLIC_API_POSTS is not set");
 }
@@ -205,7 +206,7 @@ const Login = () => {
                 >
                   Twitter
                 </button> */}
-                <a href="http://localhost:3001/auth/google/login">
+                <a href={`${googleLogin}`}>
                   <button
                     type="button"
                     className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
