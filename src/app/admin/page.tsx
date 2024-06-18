@@ -8,7 +8,7 @@ import UserStats from '@/components/admin/UserStats';
 import UserTable from '@/components/admin/UserTable';
 import React, { useState } from 'react'
 
-const page = () => {
+const Page = () => {
   const [selectedSection, setSelectedSection] = useState('dashboard');
 
   
