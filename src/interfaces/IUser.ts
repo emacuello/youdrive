@@ -108,3 +108,42 @@ export interface IUserData {
   zip_code: string;
   city: string;
 }
+export interface IUserAdm {
+  id: string;
+  email: string;
+  name: string;
+  nDnI: number;
+  nExpiration: string ;
+  phone: string;
+  image_url: string;
+  public_id: string 
+  userGoogle: boolean;
+  aboutMe: string;
+  roles: string;
+  isDeleted: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface IUserDataAdm {
+  id: string;
+  email: string;
+  password: string;
+  name: string;
+  nDni: number;
+  rExpiration: string;
+  aboutMe: string | null;
+  addresses: Address[];
+  car: Car[];
+  createdAt: string;
+  image_url: string;
+  phone: string | null;
+  notifications: Notification[];
+  post: Post[];
+  rentals: Rental[];
+  reviews: Review[];
+  roles: string;
+  updatedAt: string;
+  userGoogle: boolean;
+  zip_code: string;
+  city: string;
+}

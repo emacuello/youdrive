@@ -8,13 +8,15 @@ import { IUserData, Rental } from "@/interfaces/IUser";
 import SkeletonDashboard from "../sketelons/SkeletonDashboard";
 import Swal from "sweetalert2";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_DASHBOARD_USER;
+
 const DashboardComprador: React.FC = () => {
   const [userToken, setUserToken] = useState<string | null>(null);
   const [userData, setUserData] = useState<IUserData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [totalPrice, SetTotalPrice] = useState<number>(0);
   const router = useRouter();
-const apiUrl = process.env.NEXT_PUBLIC_API_USER_DASHBOARD;
+
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const userSession = localStorage.getItem("userSession");
