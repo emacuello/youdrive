@@ -375,7 +375,7 @@ console.log(vehicleData.image_url, deleteImage);
                         Actualizar
                     </button>
                 </div>
-                {vehicleData.image_url.length > 0 && (<p className="text-[#C4FF0D] text-center text-lg font-semibold mb-5">Tus imagenes actuales</p>)}
+                {vehicleData.image_url && vehicleData?.image_url?.length > 0 && (<p className="text-[#C4FF0D] text-center text-lg font-semibold mb-5">Tus imagenes actuales</p>)}
                 {vehicleData?.image_url && (vehicleData?.image_url?.map((url) => (<div key={url} style={{ position: 'relative', display: 'inline-block', margin: '10px' }}>                    
                     <img style={{ width: '200px', height: '200px' }} src={url} alt={url} />                    
                  <button
