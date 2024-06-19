@@ -10,7 +10,7 @@ const VehiclesComponent: React.FC<{ nPosts: IPost[] }> = ({ nPosts }) => {
             key={post.id}
             id={post.id}
             description={post.description}
-            carId={post.car.id}
+            carId={post.car?.id}
             carImg={post.car.image_url}
             carBrand={post.car.brand}
             carModel={post.car.model}
