@@ -23,7 +23,7 @@ const VehicleCard: React.FC<ICar> = ({
   useEffect(() => {
     const descriptionCharacters = () => {
       const descriptionLenght = description;
-      const reduceDescription = `${descriptionLenght.slice(0, 70)}...`;
+      const reduceDescription = `${descriptionLenght?.slice(0, 70)}...`;
       setDescriptionReduce(reduceDescription);
     };
 
