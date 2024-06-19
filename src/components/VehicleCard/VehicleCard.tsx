@@ -69,7 +69,7 @@ const VehicleCard: React.FC<ICar> = ({
 
         <div className="flex w-full justify-start  mt-5">
           <p className="text-gray-300 text-[13px]">
-            {description?.length > 70 ? descriptionReduce : description}
+            {description?.length && description?.length > 70 ? descriptionReduce : description}
           </p>
         </div>
 
