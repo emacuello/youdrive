@@ -8,7 +8,7 @@ import UserStats from '@/components/admin/UserStats';
 import UserTable from '@/components/admin/UserTable';
 import { IUserAdm } from '@/interfaces/IUser';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
 
 const Page = () => {
