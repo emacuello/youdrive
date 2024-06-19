@@ -66,7 +66,7 @@ const VehicleDetail = ({ params }: { params: { id: string } }) => {
         setPostState(data);
         setImgsPost(data.car.image_url);
         setTotalReviews(data.review.length);
-        const rentals = data.rentals.map((rental) => {
+        const rentals: IRentalPost[] = data.rentals.map((rental) => {
           return {
             ...rental,
             users: rental.users.filter((user) => user.id !== data.user.id),
