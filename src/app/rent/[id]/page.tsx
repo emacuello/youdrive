@@ -220,7 +220,7 @@ const UploadPost = ({ params }: { params: { id: string } }) => {
     }
 };
     const handleRemoveExistingImage = (src: string) => {
-    const updatedImageUrls = vehicleData.image_url.filter(url => url !== src);
+    const updatedImageUrls = vehicleData?.image_url?.filter(url => url !== src);
     setVehicleData(prevData => ({
         ...prevData,
         image_url: updatedImageUrls
