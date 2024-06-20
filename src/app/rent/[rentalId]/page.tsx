@@ -1,24 +1,29 @@
 "use client";
 import validate from "@/helpers/validate";
 import { useEffect, useState } from "react";
-import IVehicleData from "../../interfaces/IVehicleData";
-import IErrorsVehicleForm from "../../interfaces/IErrorsVehicleForm";
+import IVehicleData from "../../../interfaces/IVehicleData";
+import IErrorsVehicleForm from "../../../interfaces/IErrorsVehicleForm";
 import axios from "axios";
-import { redirect, useRouter } from "next/navigation";
-import Loader from "@/components/Loaders/loaderAuth";
+import { useRouter, useParams } from "next/navigation";
 import SkeletonDashboard from "@/components/sketelons/SkeletonDashboard";
 import Swal from "sweetalert2";
 
-const VehicleForm = () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_POSTS;
+const UploadPost = ({ params }: { params: { rentalId: string } }) => {
+  const id = params.rentalId;
+  const router = useRouter();
+  console.log(router);
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_POSTS}/${id}`;
   if (!apiUrl) {
     throw new Error("Environment variable NEXT_PUBLIC_API_POSTS is not set");
   }
-  const router = useRouter();
-  const [token, setToken] = useState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [userSession, setUserSession] = useState();
+
+  const [isOwner, setIsOwner] = useState<boolean>(false);
+  const [token, setToken] = useState<string | null>(null);
+  const [userSession, setUserSession] = useState<string | null>(null);
   const [errors, setErrors] = useState<IErrorsVehicleForm>({});
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [imagePreview, setImagePreview] = useState<string[]>([]);
+  const [deleteImage, setDeleteImage] = useState<string[]>([]);
   const [vehicleData, setVehicleData] = useState<IVehicleData>({
     title: "",
     description: "",
@@ -29,24 +34,55 @@ const VehicleForm = () => {
     brand: "",
     year: 0,
     mileage: "",
+    image_url: [],
   });
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
-      const userToken = localStorage.getItem("userSession");
-      setToken(JSON.parse(userToken!));
-      !userToken && redirect("/login");
+      const userSession = localStorage.getItem("userSession");
+      if (userSession) {
+        const parsedSession = JSON.parse(userSession);
+        setToken(parsedSession.token);
+      }
+      !userSession && router.push("/login");
     }
   }, []);
 
+  // Cargar los datos del vehículo
   useEffect(() => {
-    if (typeof window !== "undefined" && window.localStorage) {
-      const token = localStorage.getItem("userSession");
-      if (token) {
-        const parsedSession = JSON.parse(token);
-        setUserSession(parsedSession.token);
+    const fetchVehicleData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get(apiUrl, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const vehicleProps = {
+          title: response.data.title,
+          description: response.data.description,
+          price: response.data.price,
+          color: response.data.car.color,
+          model: response.data.car.model,
+          file: response.data.image_url,
+          brand: response.data.car.brand,
+          year: response.data.car.year,
+          mileage: response.data.car.mileage,
+          image_url: response.data.car.image_url,
+        };
+        setVehicleData(vehicleProps);
+        setIsLoading(false);
+
+        if (response.data.ownerId === userSession) {
+          setIsOwner(true);
+        }
+      } catch (error) {
+        console.error("Error al cargar los datos del vehículo:", error);
       }
-    }
+    };
+
+    fetchVehicleData();
   }, [router]);
 
   const handleChange = (
@@ -61,25 +97,27 @@ const VehicleForm = () => {
         ...prevData,
         [name]: files,
       }));
+      if (files) {
+        const filesArray = Array.from(files);
+        const previewsArray: string[] = [];
+
+        filesArray.forEach((file) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            previewsArray.push(reader.result as string);
+            if (previewsArray.length === filesArray.length) {
+              setImagePreview(previewsArray);
+            }
+          };
+          reader.readAsDataURL(file);
+        });
+      }
     } else {
       setVehicleData((prevData) => ({
         ...prevData,
         [name]: value,
       }));
     }
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: value.trim() === "" ? "Este campo es requerido" : "",
-    }));
-  };
-
-  const handleBlur = (
-    event: React.FocusEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = event.target;
 
     setErrors((prevErrors) => ({
       ...prevErrors,
@@ -113,46 +151,88 @@ const VehicleForm = () => {
       formData.append("mileage", vehicleData.mileage);
 
       // Si hay archivos, adjuntarlos al formData
-      if (vehicleData.file) {
-        Array.from(vehicleData.file).forEach((file) => {
-          formData.append("file", file);
+      if (vehicleData.file && vehicleData.file.length > 0) {
+        for (let i = 0; i < vehicleData.file.length; i++) {
+          formData.append("file", vehicleData.file[i]);
+        }
+      }
+      if (deleteImage.length > 0) {
+        deleteImage.forEach((url) => {
+          formData.append("image_url", url);
         });
       }
       setIsLoading(true);
-      axios
-        .post(apiUrl, formData, {
+      try {
+        // Enviar los datos al servidor
+        const response = await axios.put(apiUrl, formData, {
           headers: {
-            Authorization: `Bearer ${userSession}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
-        })
-        .then((response) => {
-          if (response.data) {
-            Swal.fire("Vehiculo creado correctamente!");
-            setIsLoading(false);
-            setVehicleData({
-              title: "",
-              description: "",
-              price: 0,
-              color: "",
-              model: "",
-              file: null,
-              brand: "",
-              year: 0,
-              mileage: "",
-            });
-            router.push("/");
-          } else {
-            alert(response.data);
-          }
-        })
-        .catch((error) => {
-          Swal.fire("Ha ocurrido un error en la conexión");
-          setIsLoading(false);
-          console.error("Error:", error);
         });
+
+        console.log("Respuesta del servidor:", response);
+        if (response.data) {
+          Swal.fire("Vehiculo actualizado correctamente!");
+          setIsLoading(false);
+          router.push("/");
+        } else {
+          const errorMessage =
+            response.data?.message || "Respuesta del servidor no válida.";
+          Swal.fire({
+            title: "Error",
+            text: `${errorMessage}`,
+          });
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error("Error al actualizar el vehículo:", error);
+        setIsLoading(false);
+        Swal.fire({
+          title: "Error",
+          text: "Hubo un error al intentar actualizar la publicación",
+        });
+      }
     }
   };
+
+  // if (!isOwner) {
+  //     return <div>No tienes permiso para editar esta publicación.</div>;
+  // }
+
+  if (isLoading) {
+    return <SkeletonDashboard />;
+  }
+
+  const handleRemoveImage = (index: number) => {
+    const updatedPreviews = [...imagePreview];
+    updatedPreviews.splice(index, 1);
+    setImagePreview(updatedPreviews);
+
+    if (vehicleData.file) {
+      const updatedFiles = Array.from(vehicleData.file);
+      updatedFiles.splice(index, 1);
+      setVehicleData((prevData) => ({
+        ...prevData,
+        file:
+          updatedFiles.length > 0
+            ? (updatedFiles as unknown as FileList)
+            : null,
+      }));
+    }
+  };
+  const handleRemoveExistingImage = (src: string) => {
+    const updatedImageUrls = vehicleData?.image_url?.filter(
+      (url) => url !== src
+    );
+    setVehicleData((prevData) => ({
+      ...prevData,
+      image_url: updatedImageUrls,
+    }));
+
+    setDeleteImage((prevState) => [...prevState, src]);
+  };
+  console.log(vehicleData.image_url, deleteImage);
 
   const brands = [
     "Kia",
@@ -171,7 +251,7 @@ const VehicleForm = () => {
     "Nissan",
     "Peugeot",
     "BMW",
-    "Otra...",
+    "Otra..."
   ];
 
   const models = [
@@ -190,17 +270,16 @@ const VehicleForm = () => {
     "Otro...",
   ];
 
-  return isLoading ? (
-    <SkeletonDashboard />
-  ) : (
-    <div className="font-sans text-white m-0 bg-[url('/background_register_2.svg')] bg-no-repeat bg-cover relative z-3 w-full pt-[70px] px-[30px] pb-[44px] justify-center items-center min-h-screen bg-gray-900 h-min flex flex-col ">
+  return (
+    <div className="bg-gradient-to-bl from-[#222222] to-[#313139] font-sans text-white">
       <div className="flex flex-col gap-2 p-4 items-center">
-        <h1 className=" text-4xl font-semibold">¡Publica tu vehículo ahora!</h1>
-        <span className="text-xl">Rápido, sencillo, y gratuito.</span>
+        <h1 className="text-4xl font-semibold mt-6">¡Edita tu vehículo!</h1>
+        <span className="text-xl">Ajusta los detalles necesarios.</span>
       </div>
+
       <form
         onSubmit={handleSubmit}
-        className="max-w-xl mx-auto p-10 flex-wrap bg-black/10 rounded"
+        className="max-w-xl mx-auto p-8 flex-wrap bg-[#222222] rounded"
       >
         <div className="block mb-4">
           <label className=" text-slate-50">Título</label>
@@ -209,7 +288,6 @@ const VehicleForm = () => {
             type="text"
             value={vehicleData.title}
             onChange={handleChange}
-            onBlur={handleBlur}
             required
             className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
           />
@@ -221,7 +299,6 @@ const VehicleForm = () => {
             name="description"
             value={vehicleData.description}
             onChange={handleChange}
-            onBlur={handleBlur}
             required
             className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
           />
@@ -230,14 +307,13 @@ const VehicleForm = () => {
           )}
         </div>
         <div className="flex gap-8">
-          <div className="mb-4 w-1/2">
-            <label className="text-slate-50">Valor USD por día</label>
+          <div className="mb-4">
+            <label className="text-slate-50">Valor</label>
             <input
               name="price"
               type="number"
               value={vehicleData.price}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
               className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
             />
@@ -251,7 +327,6 @@ const VehicleForm = () => {
               name="brand"
               value={vehicleData.brand}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
               className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
             >
@@ -276,7 +351,6 @@ const VehicleForm = () => {
               name="color"
               value={vehicleData.color}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
               className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
             >
@@ -288,20 +362,18 @@ const VehicleForm = () => {
               <option value="Negro">Negro</option>
               <option value="Blanco">Blanco</option>
               <option value="Rojo">Rojo</option>
-              <option value="Otro">Otro...</option>
             </select>
             {errors.color && (
               <span className="text-red-500">{errors.color}</span>
             )}
           </div>
 
-          <div className="mb-4 w-1/2">
+          <div className="mb-4">
             <label className="text-slate-50">Modelo</label>
             <select
               name="model"
               value={vehicleData.model}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
               className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
             >
@@ -327,7 +399,6 @@ const VehicleForm = () => {
               type="number"
               value={vehicleData.year}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
               className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
             />
@@ -339,7 +410,6 @@ const VehicleForm = () => {
               name="mileage"
               value={vehicleData.mileage}
               onChange={handleChange}
-              onBlur={handleBlur}
               required
               className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
             >
@@ -347,7 +417,7 @@ const VehicleForm = () => {
                 Selecciona el kilometraje...
               </option>
               <option value="Menos de 50.000km">Menos de 50.000km</option>
-              <option value="50.000km - 100.000km">50.000km - 100.000km</option>
+              <option value="50.000km - 100-000km">50.000km - 100-000km</option>
               <option value="100.000km - 150.000km">
                 100.000km - 150.000km
               </option>
@@ -367,7 +437,7 @@ const VehicleForm = () => {
             multiple
             className="w-full px-3 mt-3 py-4 border rounded text-slate-50"
             onChange={handleChange}
-            onBlur={handleBlur}
+            required
           />
           {errors.image && <span className="text-red-500">{errors.image}</span>}
         </div>
@@ -377,12 +447,69 @@ const VehicleForm = () => {
             disabled={hasErrors()}
             className="mb-6 w-32 items-center bg-[#C4FF0D] text-[#222222] py-2 rounded disabled:bg-slate-300"
           >
-            Publicar
+            Actualizar
           </button>
         </div>
+        {vehicleData.image_url && vehicleData?.image_url?.length > 0 && (
+          <p className="text-[#C4FF0D] text-center text-lg font-semibold mb-5">
+            Tus imagenes actuales
+          </p>
+        )}
+        {vehicleData?.image_url &&
+          vehicleData?.image_url?.map((url) => (
+            <div
+              key={url}
+              style={{
+                position: "relative",
+                display: "inline-block",
+                margin: "10px",
+              }}
+            >
+              <img
+                style={{ width: "200px", height: "200px" }}
+                src={url}
+                alt={url}
+              />
+              <button
+                type="button"
+                onClick={() => handleRemoveExistingImage(url)}
+                className=" bg-red-500 text-white rounded-full relative -top-5 -right-10 p-2"
+              >
+                Eliminar Imagen
+              </button>
+            </div>
+          ))}
+        {imagePreview.length > 0 && (
+          <p className="text-[#C4FF0D] text-center text-lg font-semibold mb-5">
+            Nuevas imagenes
+          </p>
+        )}
+        {imagePreview.map((preview, index) => (
+          <div
+            key={index}
+            style={{
+              position: "relative",
+              display: "inline-block",
+              margin: "10px",
+            }}
+          >
+            <img
+              src={preview}
+              alt={`preview ${index}`}
+              style={{ width: "200px", height: "200px" }}
+            />
+            <button
+              type="button"
+              onClick={() => handleRemoveImage(index)}
+              className=" bg-red-500 text-white rounded-full relative -top-5 -right-10 p-2"
+            >
+              Eliminar imagen
+            </button>
+          </div>
+        ))}
       </form>
     </div>
   );
 };
 
-export default VehicleForm;
+export default UploadPost;
