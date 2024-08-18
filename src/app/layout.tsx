@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import "@sweetalert2/theme-bootstrap-4";
 import NoShow from "@/components/NoShow/NoShow";
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
         <NoShow>
           <Navbar></Navbar>
         </NoShow>
-
+        <Analytics />
         {children}
         <Footer></Footer>
       </body>

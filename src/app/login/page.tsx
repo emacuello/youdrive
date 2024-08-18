@@ -46,7 +46,6 @@ const Login = () => {
     }
   }, []);
 
-  console.log(error.password);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserData({

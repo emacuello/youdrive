@@ -61,7 +61,7 @@ const Config = () => {
         }
 
         const data = await response.json();
-        console.log(data);
+      
 
         setUserData(data);
       } catch (error: any) {

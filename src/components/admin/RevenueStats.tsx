@@ -21,7 +21,7 @@ const RevenueStats: React.FC = () => {
         });
         const data: IPost[] = await response.json();
         
-        console.log("Data fetched from API:", data); // Log the data
+        
 
         if (Array.isArray(data)) {
           setCarPosts(data);
@@ -33,7 +33,7 @@ const RevenueStats: React.FC = () => {
             return sum + (isNaN(price) ? 0 : price);
           }, 0);
           
-          console.log("Total revenue calculated:", total); // Log the total revenue
+          
 
           setTotalRevenue(total);
         } else {

@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const UploadPost = ({ params }: { params: { rentalId: string } }) => {
   const id = params.rentalId;
   const router = useRouter();
-  console.log(router);
+  
   const apiUrl = `${process.env.NEXT_PUBLIC_API_POSTS}/${id}`;
   if (!apiUrl) {
     throw new Error("Environment variable NEXT_PUBLIC_API_POSTS is not set");
@@ -176,7 +176,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
           },
         });
 
-        console.log("Respuesta del servidor:", response);
+        
         if (response.data) {
           Swal.fire("Vehiculo actualizado correctamente!");
           setIsLoading(false);
@@ -237,7 +237,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
 
     setDeleteImage((prevState) => [...prevState, src]);
   };
-  console.log(vehicleData.image_url, deleteImage);
+  
 
   const brands = [
     "Kia",

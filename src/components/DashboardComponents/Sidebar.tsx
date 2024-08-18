@@ -41,7 +41,7 @@ const Sidebar = () => {
         }
 
         const data = await response.json();
-        console.log(data);
+       
 
         setUserData(data);
         setUserId(data.id)

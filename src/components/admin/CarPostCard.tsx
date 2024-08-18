@@ -46,7 +46,7 @@ const CarPostCard: React.FC = () => {
         const data: IPost[] = await response.json();
         if (Array.isArray(data)) {
           setCarPosts(data);
-          console.log(data);
+          
         } else {
           console.error("Expected an array but received:", data);
           setCarPosts([]);

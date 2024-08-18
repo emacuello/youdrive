@@ -15,7 +15,6 @@ const Auth: React.FC = () => {
 
     params.forEach((value, key) => {
       sessionData[key] = value;
-      console.log(`Parametro guardado: ${key} = ${value}`);
     });
 
     localStorage.setItem("userSession", JSON.stringify(sessionData));

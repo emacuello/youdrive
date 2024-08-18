@@ -74,7 +74,7 @@ const DashboardVendedor: React.FC = () => {
 
         const data = await response.json();
         setUserData(data);
-        console.log(data);
+        
       } catch (error: any) {
         throw new Error(error);
       } finally {
@@ -87,7 +87,7 @@ const DashboardVendedor: React.FC = () => {
     }
   }, [userToken]);
 
-  console.log(userData);
+  
   if (loading) {
     return <SkeletonDashboard />;
   }

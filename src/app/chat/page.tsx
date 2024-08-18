@@ -131,19 +131,16 @@ const ChatWeb: React.FC = () => {
             throw new Error("Error fetching messages");
           }
           const data: TMessageChat[] = await response.json();
-          console.log(data);
+          
           if (response2.ok) {
-            console.log(response2);
+            
 
             const data2 = await response2.json();
-            console.log(data2);
+            
 
             setUser(data2 as IUserChat);
           }
           if (data.length === 0) {
-            console.log("ENTRAR");
-            console.log(user);
-
             setSender(user);
             setReceiver(user);
           }
