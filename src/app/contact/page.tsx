@@ -144,7 +144,7 @@ const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
                   />
                 </svg>
                 <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                  proyectofinal.g3.henry@gmail.com
+                  ema.cuello1010@gmail.com
                 </div>
               </div>
             </div>
