@@ -13,7 +13,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   const stars = fullStar.repeat(rating) + emptyStar.repeat(maxStars - rating);
   return (
     <>
-      <div className="bg-[#2d2d2d] p-4 rounded-lg shadow my-2">
+      <div className="bg-[#2d2d2d] p-4 rounded-lg shadow-sm my-2">
         <div className="mb-2">
           <span className=" text-amber-600">{stars}</span>
         </div>

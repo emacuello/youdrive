@@ -76,7 +76,7 @@ const VehicleCard: React.FC<ICar> = ({
         </div>
 
         <div className="flex w-full justify-between items-center mt-5">
-          <span className="bg-[#b0d63f]  text-[#222222] font-semibold  text-[12px]  me-2 px-2.5 py-0.5 rounded ">
+          <span className="bg-[#b0d63f]  text-[#222222] font-semibold  text-[12px]  me-2 px-2.5 py-0.5 rounded-sm ">
             Km: {carMileage}
           </span>
           <div className="flex h-[40px]">
@@ -84,7 +84,7 @@ const VehicleCard: React.FC<ICar> = ({
               {loadingOn ? (
                 <button
                   onClick={handleOnClick}
-                  className="flex flex-row gap-1 font-semibold items-center justify-center relative h-full px-8 py-1 rounded-md text-[#222222] bg-gray-300 isolation-auto z-10 border-2 border-[#C4FF0D] before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#C4FF0D] before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700"
+                  className="flex flex-row gap-1 font-semibold items-center justify-center relative h-full px-8 py-1 rounded-md text-[#222222] bg-gray-300 isolation-auto z-10 border-2 border-[#C4FF0D] before:absolute before:w-full before:transition-all before:duration-700 hover:before:w-full before:-left-full hover:before:left-0 before:rounded-full before:bg-[#C4FF0D] before:-z-10 before:aspect-square hover:before:scale-150 overflow-hidden hover:before:duration-700"
                 >
                   <div role="status">
                     <svg
@@ -109,7 +109,7 @@ const VehicleCard: React.FC<ICar> = ({
               ) : (
                 <button
                   onClick={handleOnClick}
-                  className="flex flex-row gap-1 font-semibold items-center justify-center relative h-full px-8 py-1 rounded-md text-[#222222] bg-gray-300 isolation-auto  border-2 border-[#C4FF0D] before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#C4FF0D] before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700"
+                  className="flex flex-row gap-1 font-semibold items-center justify-center relative h-full px-8 py-1 rounded-md text-[#222222] bg-gray-300 isolation-auto  border-2 border-[#C4FF0D] before:absolute before:w-full before:transition-all before:duration-700 hover:before:w-full before:-left-full hover:before:left-0 before:rounded-full before:bg-[#C4FF0D] before:-z-10 before:aspect-square hover:before:scale-150 overflow-hidden hover:before:duration-700"
                 >
                   Ver
                   <svg

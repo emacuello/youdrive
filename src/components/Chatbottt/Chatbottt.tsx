@@ -1,28 +1,9 @@
 "use client";
 import { lazy, Suspense, useEffect, useState } from "react";
-import { GoogleGenerativeAI } from "@google/generative-ai"
 
 const ChatBot = lazy(() => import("react-chatbotify"));
 
 const Chatbottt = () => {
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY_GEMINI;
-
-  const genAI = new GoogleGenerativeAI(`${apiKey}`);
-
-  async function run(prompt: any, streamMessage: any) {
-    // For text-only input, use the gemini-pro model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-    const result = await model.generateContentStream(prompt);
-    let text = "";
-    for await (const chunk of result.stream) {
-      const chunkText = chunk.text();
-      text += chunkText;
-      streamMessage(text);
-    }
-    return text;
-  }
-
   const helpOptions = ["Preguntas frecuentes", "Quiero alquilar mi vehiculo", "Quiero crearme una cuenta", "Términos y Condiciones"]; 
 	const flow = {
 		start: {
@@ -82,8 +63,9 @@ const Chatbottt = () => {
 		},
 	}
 
-  const options = {
-    theme: {
+  // react-chatbotify v2: "options" pasó a "settings" y "theme" a "general".
+  const settings = {
+    general: {
       // embedded: true,
       primaryColor: "#222222",
       secondaryColor: "#a4cb30",
@@ -114,7 +96,7 @@ const Chatbottt = () => {
     <>
       {isLoaded && (
         <Suspense fallback={<div>Loading...</div>}>
-          <ChatBot flow={flow} options={options} />
+          <ChatBot flow={flow} settings={settings} />
         </Suspense>
       )}
     </>

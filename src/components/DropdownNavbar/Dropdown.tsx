@@ -71,7 +71,7 @@ const Dropdown: React.FC<{
     >
       <button
         onClick={toggleDropdown}
-        className="hidden md:flex  flex-row gap-1 items-center justify-center w-full py-1 text-sm hover:underline hover:bg-[#444343] duration-200 rounded-md focus:outline-none"
+        className="hidden md:flex  flex-row gap-1 items-center justify-center w-full py-1 text-sm hover:underline hover:bg-[#444343] duration-200 rounded-md focus:outline-hidden"
       >
         <div className="w-[20%]">
           <img

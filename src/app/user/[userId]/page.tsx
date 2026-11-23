@@ -5,23 +5,24 @@ import Sidebar from "@/components/DashboardComponents/Sidebar";
 import SkeletonDashboard from "@/components/sketelons/SkeletonDashboard";
 import { IUserData } from "@/interfaces/IUser";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, use } from "react";
 
 interface UserPageProps {
-  params: {
+  params: Promise<{
     userId: string;
-  };
+  }>;
 }
 
 const apiUrl = process.env.NEXT_PUBLIC_API_USERS;
 
-const UserProfile = ({ params }: UserPageProps) => {
+const UserProfile = (props: UserPageProps) => {
+  const params = use(props.params);
   const { userId } = params;
   const [userData, setUserData] = useState<IUserData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
 
-  
+
 
   useEffect(() => {
     const key = process.env.NEXT_PUBLIC_CUSTOM_HEADERS_KEY;

@@ -176,7 +176,7 @@ const ReviewsAdm: React.FC = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredReviews.map(review => (
-          <div key={review.id} className="bg-white p-4 rounded-lg shadow-sm">
+          <div key={review.id} className="bg-white p-4 rounded-lg shadow-xs">
             {editingReviewId === review.id ? (
               <div>
                 <input

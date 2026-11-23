@@ -4,7 +4,7 @@ import React from 'react';
 
 
 const SalePostCard: React.FC<SalePostCardProps> = ({ productName, productDescription, price, imageUrl }) => (
-    <div className="bg-[#2d2d2d] border rounded-lg shadow p-4">
+    <div className="bg-[#2d2d2d] border rounded-lg shadow-sm p-4">
     <img className="w-full h-32 object-cover rounded-t-lg" src={imageUrl} alt={productName} />
     <div className="mt-2">
       <h4 className="text-slate-100 font-bold text-lg">{productName}</h4>

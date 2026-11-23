@@ -357,7 +357,7 @@ const ChatWeb: React.FC = () => {
                 value={message}
                 onChange={handleChange}
                 placeholder="Escribe un mensaje..."
-                className="w-full p-2 rounded-md border border-gray-400 focus:outline-none focus:border-blue-500"
+                className="w-full p-2 rounded-md border border-gray-400 focus:outline-hidden focus:border-blue-500"
               />
               <button
                 type="submit"

@@ -54,7 +54,7 @@ const ReservationCard: React.FC<ReservationCardProps> = ({
   };
 
   return (
-    <div className="bg-[#313139] p-4 rounded-lg shadow">
+    <div className="bg-[#313139] p-4 rounded-lg shadow-sm">
       {imageUrl && (
         <img
           className="w-full h-32 object-cover rounded-t-lg"

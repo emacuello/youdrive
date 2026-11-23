@@ -150,7 +150,7 @@ const Reviews: React.FC<{ reviews: IReview[] | undefined; idPost: string }> = ({
               <div className="flex flex-col gap-3">
                 <textarea
                   id="message"
-                  className=" resize-y w-full h-[90px]  md:w-[70%] text-sm text-gray-100 bg-transparent  outline-none  placeholder-gray-300 border-b-[1px] focus:border-b-[1px] focus:border-b-[#C4FF0D]"
+                  className=" resize-y w-full h-[90px]  md:w-[70%] text-sm text-gray-100 bg-transparent  outline-hidden  placeholder-gray-300 border-b focus:border-b focus:border-b-[#C4FF0D]"
                   placeholder="Escribe una reseña aqui..."
                   onChange={handleOnChange}
                   name="comment"

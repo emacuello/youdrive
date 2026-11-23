@@ -3,7 +3,7 @@ import React from "react";
 const CardsHistory = () => {
   return (
     <>
-      <article className="bg-white  p-6 mb-6 shadow transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer border">
+      <article className="bg-white  p-6 mb-6 shadow-sm transition duration-300 group transform hover:-translate-y-2 hover:shadow-2xl rounded-2xl cursor-pointer border">
         <a
           target="_self"
           href="/blog/slug"

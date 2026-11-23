@@ -1,6 +1,6 @@
 "use client";
 import validate from "@/helpers/validate";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import IVehicleData from "../../../interfaces/IVehicleData";
 import IErrorsVehicleForm from "../../../interfaces/IErrorsVehicleForm";
 import axios from "axios";
@@ -8,10 +8,11 @@ import { useRouter, useParams } from "next/navigation";
 import SkeletonDashboard from "@/components/sketelons/SkeletonDashboard";
 import Swal from "sweetalert2";
 
-const UploadPost = ({ params }: { params: { rentalId: string } }) => {
+const UploadPost = (props: { params: Promise<{ rentalId: string }> }) => {
+  const params = use(props.params);
   const id = params.rentalId;
   const router = useRouter();
-  
+
   const apiUrl = `${process.env.NEXT_PUBLIC_API_POSTS}/${id}`;
   if (!apiUrl) {
     throw new Error("Environment variable NEXT_PUBLIC_API_POSTS is not set");
@@ -237,7 +238,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
 
     setDeleteImage((prevState) => [...prevState, src]);
   };
-  
+
 
   const brands = [
     "Kia",
@@ -276,7 +277,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
   ];
 
   return (
-    <div className="bg-gradient-to-bl from-[#222222] to-[#313139] font-sans text-white">
+    <div className="bg-linear-to-bl from-[#222222] to-[#313139] font-sans text-white">
       <div className="flex flex-col gap-2 p-4 items-center">
         <h1 className="text-4xl font-semibold mt-6">¡Edita tu vehículo!</h1>
         <span className="text-xl">Ajusta los detalles necesarios.</span>
@@ -284,7 +285,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
 
       <form
         onSubmit={handleSubmit}
-        className="max-w-xl mx-auto p-8 flex-wrap bg-[#222222] rounded"
+        className="max-w-xl mx-auto p-8 flex-wrap bg-[#222222] rounded-sm"
       >
         <div className="block mb-4">
           <label className=" text-slate-50">Título</label>
@@ -294,7 +295,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
             value={vehicleData.title}
             onChange={handleChange}
             required
-            className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+            className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
           />
           {errors.title && <span className="text-red-500">{errors.title}</span>}
         </div>
@@ -305,7 +306,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
             value={vehicleData.description}
             onChange={handleChange}
             required
-            className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+            className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
           />
           {errors.description && (
             <span className="text-red-500">{errors.description}</span>
@@ -320,7 +321,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
               value={vehicleData.price}
               onChange={handleChange}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             />
             {errors.price && (
               <span className="text-red-500">{errors.price}</span>
@@ -333,7 +334,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
               value={vehicleData.brand}
               onChange={handleChange}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             >
               <option value="" disabled>
                 Selecciona la marca...
@@ -357,7 +358,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
               value={vehicleData.color}
               onChange={handleChange}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             >
               <option value="" disabled>
                 Selecciona el color...
@@ -380,7 +381,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
               value={vehicleData.model}
               onChange={handleChange}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             >
               <option value="" disabled>
                 Selecciona el modelo...
@@ -405,7 +406,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
               value={vehicleData.year}
               onChange={handleChange}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             />
             {errors.year && <span className="text-red-500">{errors.year}</span>}
           </div>
@@ -416,7 +417,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
               value={vehicleData.mileage}
               onChange={handleChange}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             >
               <option value="" disabled>
                 Selecciona el kilometraje...
@@ -440,7 +441,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
             type="file"
             accept="image/*"
             multiple
-            className="w-full px-3 mt-3 py-4 border rounded text-slate-50"
+            className="w-full px-3 mt-3 py-4 border rounded-sm text-slate-50"
             onChange={handleChange}
             required
           />
@@ -450,7 +451,7 @@ const UploadPost = ({ params }: { params: { rentalId: string } }) => {
           <button
             type="submit"
             disabled={hasErrors()}
-            className="mb-6 w-32 items-center bg-[#C4FF0D] text-[#222222] py-2 rounded disabled:bg-slate-300"
+            className="mb-6 w-32 items-center bg-[#C4FF0D] text-[#222222] py-2 rounded-sm disabled:bg-slate-300"
           >
             Actualizar
           </button>

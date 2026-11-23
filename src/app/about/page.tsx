@@ -63,7 +63,7 @@ const About = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FaGithub className="w-6 h-6 py-[1px] bg-gray-200 text-gray-800 rounded-full" />
+                    <FaGithub className="w-6 h-6 py-px bg-gray-200 text-gray-800 rounded-full" />
                   </Link>
                 </div>
               </div>
@@ -98,7 +98,7 @@ const About = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FaGithub className="w-6 h-6 py-[1px] bg-gray-200 text-gray-800 rounded-full" />
+                    <FaGithub className="w-6 h-6 py-px bg-gray-200 text-gray-800 rounded-full" />
                   </Link>
                 </div>
               </div>
@@ -133,7 +133,7 @@ const About = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FaGithub className="w-6 h-6 py-[1px] bg-gray-200 text-gray-800 rounded-full" />
+                    <FaGithub className="w-6 h-6 py-px bg-gray-200 text-gray-800 rounded-full" />
                   </Link>
                 </div>
               </div>
@@ -168,7 +168,7 @@ const About = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FaGithub className="w-6 h-6 py-[1px] bg-gray-200 text-gray-800 rounded-full" />
+                    <FaGithub className="w-6 h-6 py-px bg-gray-200 text-gray-800 rounded-full" />
                   </Link>
                 </div>
               </div>
@@ -203,7 +203,7 @@ const About = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FaGithub className="w-6 h-6 py-[1px] bg-gray-200 text-gray-800 rounded-full" />
+                    <FaGithub className="w-6 h-6 py-px bg-gray-200 text-gray-800 rounded-full" />
                   </Link>
                 </div>
               </div>
@@ -238,7 +238,7 @@ const About = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FaGithub className="w-6 h-6 py-[1px] bg-gray-200 text-gray-800 rounded-full" />
+                    <FaGithub className="w-6 h-6 py-px bg-gray-200 text-gray-800 rounded-full" />
                   </Link>
                 </div>
               </div>
@@ -273,7 +273,7 @@ const About = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <FaGithub className="w-6 h-6 py-[1px] bg-gray-200 text-gray-800 rounded-full" />
+                    <FaGithub className="w-6 h-6 py-px bg-gray-200 text-gray-800 rounded-full" />
                   </Link>
                 </div>
               </div>

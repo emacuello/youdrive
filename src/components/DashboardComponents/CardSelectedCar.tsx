@@ -16,7 +16,7 @@ const CardSelectedCar = () => {
               className="flex flex-row absolute justify-end
                     h-16 w-full bottom-0 px-3 space-x-2
                     bg-none opacity-0 group-hover:opacity-100
-                    group-hover:bg-gradient-to-t from-black/20 via-gray-800/20 to-transparent 
+                    group-hover:bg-linear-to-t from-black/20 via-gray-800/20 to-transparent 
                     transition-all ease-in-out duration-200 delay-100"
             >
             </div>

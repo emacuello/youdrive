@@ -184,7 +184,7 @@ const CarPostCard: React.FC = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredCarPosts.map((post) => (
-          <div key={post.id} className="bg-white p-4 rounded-lg shadow-sm">
+          <div key={post.id} className="bg-white p-4 rounded-lg shadow-xs">
             {post.car.image_url && post.car.image_url.length > 0 ? (
               <img
                 src={post.car.image_url[0]}

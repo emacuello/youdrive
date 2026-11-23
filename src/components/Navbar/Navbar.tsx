@@ -239,7 +239,7 @@ const Navbar: React.FC = () => {
               value={query}
               onChange={onChangeInput}
               name="search"
-              className="bg-gray-300 h-full border rounded-l-2xl text-sm outline-none text-gray-900  focus:border-[#c2e94e] block w-full pl-3 p-2.5 placeholder-gray-500 placeholder:text-[10px] md:placeholder:text-[13px]"
+              className="bg-gray-300 h-full border rounded-l-2xl text-sm outline-hidden text-gray-900  focus:border-[#c2e94e] block w-full pl-3 p-2.5 placeholder-gray-500 placeholder:text-[10px] md:placeholder:text-[13px]"
               placeholder="Titulo, Marca, Modelo etc..."
             />
             <button
@@ -267,7 +267,7 @@ const Navbar: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="inline-flex h-full items-center  rounded-r-2xl py-2.5 px-3 hover:shadow-xl text-sm  bg-[#c2e94e] border border-[#c2e94e] hover:bg-[#94b338] focus:ring-4 focus:outline-none duration-300"
+            className="inline-flex h-full items-center  rounded-r-2xl py-2.5 px-3 hover:shadow-xl text-sm  bg-[#c2e94e] border border-[#c2e94e] hover:bg-[#94b338] focus:ring-4 focus:outline-hidden duration-300"
           >
             <svg
               aria-hidden="true"
@@ -371,7 +371,7 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="hidden md:flex flex-row gap-10 h-full items-center ">
-        <div className="hidden md:flex flex-row  h-full items-center hover:border-b-[1px] hover:border-b-[#C4FF0D] focus:border-b-[#C4FF0D] duration-150">
+        <div className="hidden md:flex flex-row  h-full items-center hover:border-b hover:border-b-[#C4FF0D] focus:border-b-[#C4FF0D] duration-150">
           <button className="flex flex-row items-center justify-center">
             <Link
               href="/about"
@@ -382,7 +382,7 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        <div className="hidden md:flex flex-row  h-full items-center hover:border-b-[1px] hover:border-b-[#C4FF0D] focus:border-b-[#C4FF0D] duration-150">
+        <div className="hidden md:flex flex-row  h-full items-center hover:border-b hover:border-b-[#C4FF0D] focus:border-b-[#C4FF0D] duration-150">
           <button className="flex flex-row items-center justify-center">
             <Link
               href="/answers"
@@ -393,7 +393,7 @@ const Navbar: React.FC = () => {
           </button>
         </div>
 
-        <div className="hidden md:flex flex-row h-full items-center hover:border-b-[1px] hover:border-b-[#C4FF0D] focus:border-b-[#C4FF0D] duration-150">
+        <div className="hidden md:flex flex-row h-full items-center hover:border-b hover:border-b-[#C4FF0D] focus:border-b-[#C4FF0D] duration-150">
           <button className="flex flex-row items-center justify-center">
             <Link
               href="/contact"
@@ -465,7 +465,7 @@ const Navbar: React.FC = () => {
       <div className="md:hidden flex items-center">
         <button
           onClick={toggleMenu}
-          className="focus:outline-none ml-2 hover:bg-[#373636] px-1 py-1 rounded-lg duration-300"
+          className="focus:outline-hidden ml-2 hover:bg-[#373636] px-1 py-1 rounded-lg duration-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

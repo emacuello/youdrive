@@ -6,7 +6,7 @@ import DateRangePicker from "@/components/DateRangePicker/DateRangePicker";
 import Reviews from "@/components/Reviews/Reviews";
 import { IPost } from "@/components/VehiclesComponent/interfaces/IPost";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { Button, Tooltip } from "flowbite-react";
 import SkeletonDashboard from "@/components/sketelons/SkeletonDashboard";
 import { IRentalPost } from "@/components/VehiclesComponent/interfaces/IRentalPost";
@@ -22,7 +22,8 @@ if (!apiPostUrl) {
   throw new Error("Environment variable NEXT_PUBLIC_API_POSTS is not set");
 }
 
-const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
+const VehicleDetail = (props: { params: Promise<{ vehicleId: string }> }) => {
+  const params = use(props.params);
   const bookedDates = [
     new Date("2024-06-10T00:00:00Z").toISOString().replace(".000Z", ""),
     new Date("2024-06-15T00:00:00Z").toISOString().replace(".000Z", ""),
@@ -408,8 +409,8 @@ const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
             </div>
           </div>
 
-          <div className="flex mt-3 flex-col justify-around h-[500px] md:h-[400px] max-h-[100%]">
-            <div className="flex flex-col  pb-4 border-b-[1px] border-[#c2e94e]">
+          <div className="flex mt-3 flex-col justify-around h-[500px] md:h-[400px] max-h-full">
+            <div className="flex flex-col  pb-4 border-b border-[#c2e94e]">
               <h1 className="text-lg md:text-2xl font-semibold text-gray-100">
                 Descripcion
               </h1>
@@ -419,7 +420,7 @@ const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
                 </li>
               </ul>
             </div>
-            <div className="flex flex-col border-b-[1px] border-b-[#c2e94e] py-4">
+            <div className="flex flex-col border-b border-b-[#c2e94e] py-4">
               <h1 className="text-lg md:text-2xl text-gray-100 font-semibold ">
                 Datos del vehiculo
               </h1>
@@ -575,7 +576,7 @@ const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
               />
             </div>
 
-            <div className="flex flex-col py-4 border-t-[2px] border-t-[#c2e94e] gap-3">
+            <div className="flex flex-col py-4 border-t-2 border-t-[#c2e94e] gap-3">
               <div className="flex flex-row items-center gap-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -631,7 +632,7 @@ const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
         </div>
 
         <div className="flex  flex-col h-full  w-[70%] md:w-[30%] justify-center items-center my-5">
-          <div className="flex flex-col shadow-2xl rounded-t-xl md:w-[295px] w-full h-[200px] items-center justify-center bg-[#222222] px-5 py-5 md:h-[230px]  border-t-[2px] boder-gray-300">
+          <div className="flex flex-col shadow-2xl rounded-t-xl md:w-[295px] w-full h-[200px] items-center justify-center bg-[#222222] px-5 py-5 md:h-[230px]  border-t-2 boder-gray-300">
             <div className="flex flex-row items-center ">
               <svg
                 className="w-4 h-4  md:w-6  md:h-6 text-[#C4FF0D] "
@@ -674,7 +675,7 @@ const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
                   placement="right"
                   animation="duration-500"
                 >
-                  <Button className="border-[2px] border-[#C4FF0D] rounded-3xl  bg-transparent transition-none  enabled:hover:bg-transparent">
+                  <Button className="border-2 border-[#C4FF0D] rounded-3xl  bg-transparent transition-none  enabled:hover:bg-transparent">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -707,17 +708,17 @@ const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
                 </h1>
               </div>
               {postState?.car.availability ? (
-                <span className="bg-[#b0d63f] text-[12px] text-[#222222] font-semibold  md:text-sm me-2  md:px-2.5 md:py-0.5 rounded ">
+                <span className="bg-[#b0d63f] text-[12px] text-[#222222] font-semibold  md:text-sm me-2  md:px-2.5 md:py-0.5 rounded-sm ">
                   Disponible
                 </span>
               ) : (
-                <span className="bg-red-800 text-[12px] text-gray-300 font-semibold  md:text-sm  me-2  md:px-2.5 md:py-0.5 rounded ">
+                <span className="bg-red-800 text-[12px] text-gray-300 font-semibold  md:text-sm  me-2  md:px-2.5 md:py-0.5 rounded-sm ">
                   No disponible
                 </span>
               )}
             </div>
           </div>
-          <div className="flex flex-col rounded-b-xl w-full gap-5 shadow-2xl md:w-[295px] h-[290px] bg-[#222222] px-5 py-5 border-b-[2px]  border-gray-300 items-center ">
+          <div className="flex flex-col rounded-b-xl w-full gap-5 shadow-2xl md:w-[295px] h-[290px] bg-[#222222] px-5 py-5 border-b-2  border-gray-300 items-center ">
             <div className="flex w-full justify-center items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -732,7 +733,7 @@ const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
                 Reserva
               </h1>
             </div>
-            <div className="flex flex-col w-full pb-5 justify-around border-b-gray-300 border-b-[1px]">
+            <div className="flex flex-col w-full pb-5 justify-around border-b-gray-300 border-b">
               <div className="flex flex-row w-full items-center gap-2 justify-start">
                 <h1 className="text-2xl text-gray-300">
                   ${postState?.price} US
@@ -764,7 +765,7 @@ const VehicleDetail = ({ params }: { params: { vehicleId: string } }) => {
             </div>
           </div>
 
-          <div className="flex flex-col mt-5 rounded-b-xl rounded-t-xl w-full gap-5 shadow-2xl md:w-[295px] h-[290px] bg-[#222222] px-5 py-5 border-b-[2px] border-t-[2px] border-gray-300 items-center">
+          <div className="flex flex-col mt-5 rounded-b-xl rounded-t-xl w-full gap-5 shadow-2xl md:w-[295px] h-[290px] bg-[#222222] px-5 py-5 border-b-2 border-t-2 border-gray-300 items-center">
             <h1 className="text-xl text-gray-200 font-semibold">
               ¡No te preocupes!
             </h1>

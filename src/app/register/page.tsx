@@ -153,7 +153,7 @@ const Register = () => {
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full mt-2 px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full mt-2 px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -171,7 +171,7 @@ const Register = () => {
                   type="text"
                   id="email"
                   name="email"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -191,7 +191,7 @@ const Register = () => {
                   type="number"
                   id="nDni"
                   name="nDni"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -209,7 +209,7 @@ const Register = () => {
                   type="text"
                   id="phone"
                   name="phone"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -228,7 +228,7 @@ const Register = () => {
                 type="text"
                 id="address"
                 name="address"
-                className="w-full mt-2 px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                className="w-full mt-2 px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                 required
                 onChange={handleOnChange}
                 onBlur={handleBlur}
@@ -247,7 +247,7 @@ const Register = () => {
                   type="text"
                   id="city"
                   name="city"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -265,7 +265,7 @@ const Register = () => {
                   type="text"
                   id="state"
                   name="state"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -285,7 +285,7 @@ const Register = () => {
                   type="text"
                   id="country"
                   name="country"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -303,7 +303,7 @@ const Register = () => {
                   type="text"
                   id="zip_code"
                   name="zip_code"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -324,7 +324,7 @@ const Register = () => {
                     type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                     required
                     onChange={handleOnChange}
                     onBlur={handleBlur}
@@ -357,7 +357,7 @@ const Register = () => {
                   type={showPassword ? "text" : "password"}
                   id="confirmPassword"
                   name="confirmPassword"
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none text-black focus:border-blue-500"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-hidden text-black focus:border-blue-500"
                   required
                   onChange={handleOnChange}
                   onBlur={handleBlur}
@@ -381,7 +381,7 @@ const Register = () => {
           <div className="flex justify-center">
             <Link
               href={`${authApi}`}
-              className="w-3/4 transition duration-200 border border-gray-200 text-slate-50 hover:shadow-[#c3ff0d92] py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center"
+              className="w-3/4 transition duration-200 border border-gray-200 text-slate-50 hover:shadow-[#c3ff0d92] py-2.5 rounded-lg text-sm shadow-xs hover:shadow-md font-normal text-center"
             >
               Ingresar con Google
             </Link>

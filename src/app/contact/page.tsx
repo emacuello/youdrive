@@ -162,7 +162,7 @@ const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
                   name="name"
                   id="name"
                   placeholder="Nombre completo"
-                  className="w-100 mt-2 py-3 px-3 rounded-lg bg-[#222222] border border-gray-700 text-gray-200 font-semibold focus:border-[#C4FF0D] focus:outline-none"
+                  className="mt-2 py-3 px-3 rounded-lg bg-[#222222] border border-gray-700 text-gray-200 font-semibold focus:border-[#C4FF0D] focus:outline-hidden"
                   value={formData.name}
                   onChange={handleChange}
                 />
@@ -177,7 +177,7 @@ const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
                   name="email"
                   id="email"
                   placeholder="Email"
-                  className="w-100 mt-2 py-3 px-3 rounded-lg bg-[#222222] border border-gray-700 text-gray-200 font-semibold focus:border-[#C4FF0D] focus:outline-none"
+                  className="mt-2 py-3 px-3 rounded-lg bg-[#222222] border border-gray-700 text-gray-200 font-semibold focus:border-[#C4FF0D] focus:outline-hidden"
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -191,7 +191,7 @@ const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
                   name="message"
                   id="message"
                   placeholder="Mensaje"
-                  className="w-100 mt-2 py-3 px-3 rounded-lg bg-[#222222] border border-gray-700 text-gray-200 font-semibold focus:border-[#C4FF0D] focus:outline-none"
+                  className="mt-2 py-3 px-3 rounded-lg bg-[#222222] border border-gray-700 text-gray-200 font-semibold focus:border-[#C4FF0D] focus:outline-hidden"
                   value={formData.message}
                   onChange={handleChange}
                 ></textarea>

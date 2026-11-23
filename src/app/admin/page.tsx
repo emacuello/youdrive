@@ -107,7 +107,7 @@ const Page = () => {
   return (
     <div className="flex min-h-screen">
       <SidebarAdm onSelect={setSelectedSection} />
-      <div className="flex-grow bg-gray-100 p-6">
+      <div className="grow bg-gray-100 p-6">
         {selectedSection === 'dashboard' && (
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <UserStats />

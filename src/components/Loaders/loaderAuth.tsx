@@ -59,8 +59,8 @@ const Loader: React.FC = () => {
         </div>
         {/* Road */}
         <div className="relative w-full h-0.5 bg-[#282828] rounded-full bottom-0">
-          <div className="absolute right-[-50%] w-5 h-full bg-[#282828] rounded-full border-l-[10px] border-white animate-[roadAnimation_1.4s_linear_infinite]"></div>
-          <div className="absolute right-[-65%] w-2.5 h-full bg-[#282828] rounded-full border-l-[4px] border-white animate-[roadAnimation_1.4s_linear_infinite]"></div>
+          <div className="absolute right-[-50%] w-5 h-full bg-[#282828] rounded-full border-l-10 border-white animate-[roadAnimation_1.4s_linear_infinite]"></div>
+          <div className="absolute right-[-65%] w-2.5 h-full bg-[#282828] rounded-full border-l-4 border-white animate-[roadAnimation_1.4s_linear_infinite]"></div>
         </div>
         {/* Lamp Post */}
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 453.459 453.459" className="absolute bottom-0 right-[-90%] h-[90px] animate-[roadAnimation_1.4s_linear_infinite]">

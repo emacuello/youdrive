@@ -227,7 +227,7 @@ const Config = () => {
               <button
                 type="button"
                 onClick={handleRemoveImage}
-                className="bg-indigo-50 hover:bg-[#C4FF0D] text-slate-950 font-bold mt-2 py-1 px-1 border border-slate-950 rounded text-sm"
+                className="bg-indigo-50 hover:bg-[#C4FF0D] text-slate-950 font-bold mt-2 py-1 px-1 border border-slate-950 rounded-sm text-sm"
               >
                 Eliminar imagen
               </button>
@@ -245,7 +245,7 @@ const Config = () => {
                   Email
                 </label>
                 <input
-                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded-sm py-3 px-4 mb-3"
                   disabled
                   type="text"
                   placeholder={userData?.email}
@@ -259,7 +259,7 @@ const Config = () => {
                   Cambiar Nombre
                 </label>
                 <input
-                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4"
                   type="text"
                   name="name"
                   value={userData?.name || ""}
@@ -274,7 +274,7 @@ const Config = () => {
                 </label>
                 <input
                   disabled={!isPasswordEnabled}
-                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4 mb-3"
                   type="password"
                   name="password"
                   placeholder="******************"
@@ -294,7 +294,7 @@ const Config = () => {
                     Celular
                   </label>
                   <input
-                    className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+                    className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4 mb-3"
                     type="text"
                     name="phone"
                     placeholder={userData?.phone || ""}
@@ -307,7 +307,7 @@ const Config = () => {
                     Documento
                   </label>
                   <input
-                    className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3"
+                    className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4 mb-3"
                     type="text"
                     name="nDni"
                     value={userData?.nDni || ""}
@@ -319,7 +319,7 @@ const Config = () => {
                     V. Registro
                   </label>
                   <input
-                    className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                    className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4"
                     type="text"
                     name="rExpiration"
                     value={userData?.rExpiration || ""}
@@ -334,7 +334,7 @@ const Config = () => {
                   Dirección
                 </label>
                 <input
-                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4"
                   type="text"
                   name="address"
                   value={userData?.addresses[0]?.address || ""}
@@ -346,7 +346,7 @@ const Config = () => {
                   Ciudad
                 </label>
                 <input
-                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4"
                   type="text"
                   name="city"
                   value={userData?.addresses[0]?.city || ""}
@@ -358,7 +358,7 @@ const Config = () => {
                   Provincia
                 </label>
                 <input
-                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4"
                   type="text"
                   name="state"
                   value={userData?.addresses[0]?.state || ""}
@@ -370,7 +370,7 @@ const Config = () => {
                   País
                 </label>
                 <input
-                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4"
                   type="text"
                   name="country"
                   value={userData?.addresses[0]?.country || ""}
@@ -382,7 +382,7 @@ const Config = () => {
                   Código Postal
                 </label>
                 <input
-                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                  className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-sm py-3 px-4"
                   type="text"
                   name="zip_code"
                   value={userData?.addresses[0]?.zip_code || ""}
@@ -392,7 +392,7 @@ const Config = () => {
             </div>
             <button
               type="submit"
-              className="mt-4 px-4 py-2 bg-[#232326] text-white rounded hover:bg-[#333335]"
+              className="mt-4 px-4 py-2 bg-[#232326] text-white rounded-sm hover:bg-[#333335]"
             >
 
               {loadinData ? "Guardar cambios" : <LoaderBasic />}

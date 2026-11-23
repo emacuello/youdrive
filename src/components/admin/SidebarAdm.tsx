@@ -10,21 +10,21 @@ const SidebarAdm: React.FC<SidebarProps> = ({ onSelect }) => {
       <div className="p-4 text-2xl font-semibold">
         Admin Dashboard
       </div>
-      <nav className="flex-grow">
+      <nav className="grow">
         <button
-          className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 w-full text-left"
+          className="block py-2.5 px-4 rounded-sm transition duration-200 hover:bg-gray-700 w-full text-left"
           onClick={() => onSelect('dashboard')}
         >
           Dashboard
         </button>
         <button
-          className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 w-full text-left"
+          className="block py-2.5 px-4 rounded-sm transition duration-200 hover:bg-gray-700 w-full text-left"
           onClick={() => onSelect('users')}
         >
           Users
         </button>
         <button
-          className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 w-full text-left"
+          className="block py-2.5 px-4 rounded-sm transition duration-200 hover:bg-gray-700 w-full text-left"
           onClick={() => onSelect('reviews')}
         >
           Reviews

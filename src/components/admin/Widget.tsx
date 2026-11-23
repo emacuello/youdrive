@@ -7,7 +7,7 @@ interface WidgetProps {
 
 const Widget: React.FC<WidgetProps> = ({ title, value }) => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-sm">
+    <div className="bg-white p-4 rounded-lg shadow-xs">
       <h2 className="text-lg font-semibold mb-2">{title}</h2>
       <p className="text-gray-600">{value}</p>
     </div>

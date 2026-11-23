@@ -202,7 +202,7 @@ const VehicleForm = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="max-w-xl mx-auto p-10 flex-wrap bg-black/10 rounded"
+        className="max-w-xl mx-auto p-10 flex-wrap bg-black/10 rounded-sm"
       >
         <div className="block mb-4">
           <label className=" text-slate-50">Título</label>
@@ -213,7 +213,7 @@ const VehicleForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             required
-            className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+            className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
           />
           {errors.title && <span className="text-red-500">{errors.title}</span>}
         </div>
@@ -225,7 +225,7 @@ const VehicleForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             required
-            className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+            className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
           />
           {errors.description && (
             <span className="text-red-500">{errors.description}</span>
@@ -241,7 +241,7 @@ const VehicleForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             />
             {errors.price && (
               <span className="text-red-500">{errors.price}</span>
@@ -255,7 +255,7 @@ const VehicleForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             >
               <option value="" disabled>
                 Selecciona la marca...
@@ -280,7 +280,7 @@ const VehicleForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             >
               <option value="" disabled>
                 Selecciona el color...
@@ -305,7 +305,7 @@ const VehicleForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             >
               <option value="" disabled>
                 Selecciona el modelo...
@@ -331,7 +331,7 @@ const VehicleForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             />
             {errors.year && <span className="text-red-500">{errors.year}</span>}
           </div>
@@ -343,7 +343,7 @@ const VehicleForm = () => {
               onChange={handleChange}
               onBlur={handleBlur}
               required
-              className="w-full px-3 mt-3 py-2 border rounded text-[#222222]"
+              className="w-full px-3 mt-3 py-2 border rounded-sm text-[#222222]"
             >
               <option value="" disabled>
                 Selecciona el kilometraje...
@@ -367,7 +367,7 @@ const VehicleForm = () => {
             type="file"
             accept="image/*"
             multiple
-            className="w-full px-3 mt-3 py-4 border rounded text-slate-50"
+            className="w-full px-3 mt-3 py-4 border rounded-sm text-slate-50"
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -377,7 +377,7 @@ const VehicleForm = () => {
           <button
             type="submit"
             disabled={hasErrors()}
-            className="mb-6 w-32 items-center bg-[#C4FF0D] text-[#222222] py-2 rounded disabled:bg-slate-300"
+            className="mb-6 w-32 items-center bg-[#C4FF0D] text-[#222222] py-2 rounded-sm disabled:bg-slate-300"
           >
             Publicar
           </button>

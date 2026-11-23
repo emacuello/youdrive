@@ -182,7 +182,7 @@ const UserTable: React.FC<{ userRole: string }> = ({ userRole }) => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredUsers.map(user => (
-          <div key={user.id} className="bg-white p-4 rounded-lg shadow-sm">
+          <div key={user.id} className="bg-white p-4 rounded-lg shadow-xs">
             {editingUserId === user.id ? (
               <div>
                 <input

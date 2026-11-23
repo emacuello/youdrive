@@ -109,7 +109,7 @@ const DashboardVendedor: React.FC = () => {
               </p>
             </div>
             <Link href="/vehicleForm">
-              <button className=" px-4 py-2  bg-[#232326] text-white rounded hover:bg-[#131212]">
+              <button className=" px-4 py-2  bg-[#232326] text-white rounded-sm hover:bg-[#131212]">
                 Crear Nueva Publicación
               </button>
             </Link>
@@ -214,7 +214,7 @@ const SaleCard: React.FC<SaleCardProps> = ({
   price,
   imageUrl,
 }) => (
-  <div className="bg-[#2d2d2d] p-4 rounded-lg shadow">
+  <div className="bg-[#2d2d2d] p-4 rounded-lg shadow-sm">
     <img
       className="w-full h-32 object-cover rounded-t-lg"
       src={imageUrl}
@@ -241,7 +241,7 @@ const ListedCarCard: React.FC<ListedCarCardProps> = ({
   imageUrl,
   idPost,
 }) => (
-  <div className="bg-[#2d2d2d] p-4 rounded-lg shadow">
+  <div className="bg-[#2d2d2d] p-4 rounded-lg shadow-sm">
     <img
       className="w-full h-32 object-cover rounded-t-lg"
       src={imageUrl}
@@ -252,7 +252,7 @@ const ListedCarCard: React.FC<ListedCarCardProps> = ({
       <p className="text-slate-400 font-semibold mt-2">{`$ ${price}/dia`}</p>
       <div className="text-center mt-4 flex align-middle justify-between ">
         <Link href='/vehicle/[vehicleId]' as={`vehicle/${idPost}`}>
-          <button className="px-4 py-2 bg-[#232326] text-white rounded hover:bg-[#131212]">
+          <button className="px-4 py-2 bg-[#232326] text-white rounded-sm hover:bg-[#131212]">
             Ver más detalles
           </button>
         </Link>
@@ -291,7 +291,7 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ title, value, description }) => (
-  <div className="bg-[#2d2d2d] p-4 rounded-lg shadow">
+  <div className="bg-[#2d2d2d] p-4 rounded-lg shadow-sm">
     <h4 className=" text-slate-100 font-bold text-lg">{title}</h4>
     <p className="text-slate-200 font-semibold text-2xl mt-2">{value}</p>
     <p className="text-slate-400 text-sm mt-1">{description}</p>

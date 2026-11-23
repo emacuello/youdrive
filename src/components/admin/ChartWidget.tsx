@@ -9,7 +9,7 @@ const data = [
 
 const SimpleBarChart: React.FC = () => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow-sm">
+    <div className="bg-white p-4 rounded-lg shadow-xs">
       <h2 className="text-lg font-semibold mb-2">Revenue Over Time</h2>
       <div className="flex">
         {data.map((entry, index) => (

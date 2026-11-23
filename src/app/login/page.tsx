@@ -150,7 +150,7 @@ const Login = () => {
             Bienvenido a{" "}
             <strong className="text-2xl text-[#C4FF0D]">YouDrive!</strong>
           </h1>
-          <div className="bg-[#464545] border-2 border-[#a0c434] shadow w-full rounded-lg divide-y divide-y-gray-200">
+          <div className="bg-[#464545] border-2 border-[#a0c434] shadow-sm w-full rounded-lg divide-y divide-y-gray-200">
             <div className="px-5 py-7">
               <form onSubmit={handleSubmit}>
                 <label className="font-semibold text-sm text-gray-200 pb-1 block">
@@ -165,8 +165,8 @@ const Login = () => {
                   type="text"
                   className={
                     error.email
-                      ? "border-[1px] focus:outline-[#b7e237] rounded-full px-3 py-2 mt-1 mb-2 text-sm w-full ring-red-500 text-red-700 border-red-600"
-                      : "border-[1px]  focus:outline-[#b7e237] rounded-full px-3 py-2 mt-1 text-sm w-full "
+                      ? "border focus:outline-[#b7e237] rounded-full px-3 py-2 mt-1 mb-2 text-sm w-full ring-red-500 text-red-700 border-red-600"
+                      : "border  focus:outline-[#b7e237] rounded-full px-3 py-2 mt-1 text-sm w-full "
                   }
                 />
                 {error.email && (
@@ -186,8 +186,8 @@ const Login = () => {
                       required
                       className={
                         error.password
-                          ? "border-[1px] focus:outline-[#b7e237] rounded-full px-3 py-2 mt-1 mb-2 text-sm w-full ring-red-500 text-red-700 border-red-600"
-                          : "border-[1px]  focus:outline-[#b7e237] rounded-full px-3 py-2 mt-1  text-sm w-full"
+                          ? "border focus:outline-[#b7e237] rounded-full px-3 py-2 mt-1 mb-2 text-sm w-full ring-red-500 text-red-700 border-red-600"
+                          : "border  focus:outline-[#b7e237] rounded-full px-3 py-2 mt-1  text-sm w-full"
                       }
                     />
                     <button
@@ -234,12 +234,12 @@ const Login = () => {
               <div className="flex flex-row justify-center">
                 {/* <button
                   type="button"
-                  className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
+                  className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-xs hover:shadow-md font-normal text-center inline-block"
                 >
                   Twitter
                 </button> */}
                 <Link href={`${authApi}`}>
-                  <button className="max-w-xs flex px-6 py-2 text-sm leading-5 font-bold text-center uppercase align-middle items-center rounded border border-gray-300 gap-3 text-gray-700 bg-white cursor-pointer transition-transform duration-600 ease-in-out hover:scale-105">
+                  <button className="max-w-xs flex px-6 py-2 text-sm leading-5 font-bold text-center uppercase align-middle items-center rounded-sm border border-gray-300 gap-3 text-gray-700 bg-white cursor-pointer transition-transform duration-600 ease-in-out hover:scale-105">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       preserveAspectRatio="xMidYMid"
@@ -269,7 +269,7 @@ const Login = () => {
 
                 {/* <button
                   type="button"
-                  className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block"
+                  className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-xs hover:shadow-md font-normal text-center inline-block"
                 >
                   Github
                 </button> */}
@@ -280,7 +280,7 @@ const Login = () => {
             <div className="grid grid-cols-2 gap-1">
               <div className="text-center justify-start sm:text-left whitespace-nowrap">
                 <Link href="/">
-                  <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-200 hover:bg-[#464545] focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                  <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-200 hover:bg-[#464545] focus:outline-hidden focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

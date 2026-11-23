@@ -20,7 +20,7 @@ const NotfoundPage = () => {
             </div>
             <div className="mb-20 md:mb-0">
               <Link href="/">
-                <button className="text-lg font-light outline-none focus:outline-none transform transition-all hover:scale-110 text-yellow-500 hover:text-[#C4FF0D`]">
+                <button className="text-lg font-light outline-hidden focus:outline-hidden transform transition-all hover:scale-110 text-yellow-500 hover:text-[#C4FF0D`]">
                   <i className="mdi mdi-arrow-left mr-2"></i>Volver al inicio
                 </button>
               </Link>

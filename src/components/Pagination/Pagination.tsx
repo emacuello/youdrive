@@ -42,7 +42,7 @@ const Pagination = ({
   }, [nPages]);
 
   return (
-    <div className="border-t-[1px] border-gray-300 py-3 flex flex-row justify-between">
+    <div className="border-t border-gray-300 py-3 flex flex-row justify-between">
       <div className="flex flex-row">
         <h1>
           Mostrando pagina{" "}
@@ -55,7 +55,7 @@ const Pagination = ({
           <li>
             <button
               onClick={previus}
-              className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-300  border-l-[1px] border-[#C4FF0D] hover:bg-[#222222]  hover:text-[#C4FF0D] duration-300  "
+              className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-300  border-l border-[#C4FF0D] hover:bg-[#222222]  hover:text-[#C4FF0D] duration-300  "
             >
               Anterior
             </button>
@@ -75,7 +75,7 @@ const Pagination = ({
           <li>
             <button
               onClick={next}
-              className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-300  border-r-[1px] border-[#C4FF0D] hover:bg-[#222222]  hover:text-[#C4FF0D] duration-300"
+              className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-300  border-r border-[#C4FF0D] hover:bg-[#222222]  hover:text-[#C4FF0D] duration-300"
             >
               Siguiente
             </button>

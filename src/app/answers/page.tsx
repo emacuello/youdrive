@@ -38,7 +38,7 @@ const FAQ = () => {
       {faqs.map((faq, index) => (
         <div key={index} className="mb-4 border-b">
           <button
-            className="w-full text-left py-2 focus:outline-none"
+            className="w-full text-left py-2 focus:outline-hidden"
             onClick={() => toggleFAQ(index)}
           >
             <h3 className="text-xl font-semibold">{faq.question}</h3>

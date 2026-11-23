@@ -49,7 +49,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
           type="text" 
           value={location} 
           onChange={(e) => setLocation(e.target.value)} 
-          className="w-full p-2 pr-20 rounded bg-[#2d2d2d] border border-black focus:outline-none" 
+          className="w-full p-2 pr-20 rounded-sm bg-[#2d2d2d] border border-black focus:outline-hidden" 
           placeholder="Buenos Aires, CABA"
         />
       </div>
